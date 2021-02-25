@@ -10,12 +10,11 @@
 6 процентов
 ...
 100 процентов"""
-number = int(input('введите число от 1 до 100:'))
-if number == 1:
-    print('1 процент')
-elif 2 <= number <= 4:
-    print(number, 'процента')
-elif number <= 100:
-    print(number, 'процентов')
-else:
-    print('число не в диапазоне от 1 до 100!')
+
+for number in range(1, 101):
+    if number % 10 == 1 and number // 10 != 1:
+        print(number, 'процент')
+    elif 2 <= number % 10 <= 4 and number // 10 != 1:
+        print(number, 'процента')
+    else:
+        print(number, 'процентов')

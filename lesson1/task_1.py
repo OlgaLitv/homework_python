@@ -17,7 +17,7 @@ one_minute = 60
 if duration < one_minute:
     print(duration, 'сек')
 elif duration > one_day:
-    print(duration//one_day, 'дн', duration % one_day // one_hour, 'час', duration % one_day % one_hour // one_minute, 'мин', duration % one_minute, 'сек')
+    print(duration//one_day, 'дн', duration // one_hour, 'час', duration % one_hour // one_minute, 'мин', duration % one_minute, 'сек')
 elif duration > one_hour:
     print(duration//one_hour, 'час', duration % one_hour//one_minute, 'мин', duration % one_minute, 'сек')
 elif duration > one_minute:
