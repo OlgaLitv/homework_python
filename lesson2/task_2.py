@@ -18,11 +18,11 @@ weather_string = ""
 for element in weather_list:
     is_integer = True
     for letter in element:
-        if not (ord('0') <= ord(letter) <= ord('9') or element[0] == '-' or element[0]  == '+'):
+        if not (ord('0') <= ord(letter) <= ord('9') or element[0] == '-' or element[0] == '+'):
             is_integer = False
-    if (is_integer and element != ''):
+    if is_integer and element != '':
         weather_list2.append('"')
-        if (element[0] == '-' or element[0]  == '+'):
+        if element[0] == '-' or element[0] == '+':
             weather_list2.append(element[0] + f'{int(element[1:]):02d}')
             weather_string += '"' + element[0] + f'{int(element[1:]):02d}' + '" '
         else:
@@ -34,5 +34,5 @@ for element in weather_list:
         weather_list2.append(element)
         weather_string += element + ' '
     index += 1
-print('обработанный список:', weather_list2)
+print('новый список:', weather_list2)
 print('строка:', weather_string)
