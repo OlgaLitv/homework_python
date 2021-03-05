@@ -12,13 +12,14 @@
 
 
 def thesaurus(*args):
-    sorted_names = [*args]
-    sorted_names.sort()
+    sorted_names = sorted(args)
     output_dict = {}
     for name in sorted_names:
-        if not name[0] in output_dict:
+        #print('___', name)
+        if name[0] not in output_dict:
+            print('___', name)
             same_letters_names = filter(lambda el: el.startswith(name[0]), args)
-            output_dict[name[0]] = {*same_letters_names}
+            output_dict[name[0]] = [*same_letters_names]
     return output_dict
 
 

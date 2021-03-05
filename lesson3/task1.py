@@ -15,7 +15,7 @@ numbers = {'one': 'один', 'two': 'два', 'three': 'три', 'four': 'че�
 
 
 def num_translate(number):
-      return numbers.get(number, None)
+      return numbers.get(number)
 
 
 print(num_translate(input('Input number, please:')))
