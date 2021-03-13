@@ -25,12 +25,10 @@ adjectives = ["веселый", "яркий", "зеленый", "утопичн�
 def get_jokes(num, repeat=True):
     """function returns num choices, with repeat or without repeat"""
     output_lst = []
-    if num > 5:
+    if num > 5 and not repeat:
         num = 5
     for i in range(num):
-        word1 = choice(nouns)
-        word2 = choice(adverbs)
-        word3 = choice(adjectives)
+        word1, word2, word3 = choice(nouns), choice(adverbs), choice(adjectives)
         if not repeat:
             nouns.remove(word1)
             adverbs.remove(word2)
@@ -40,4 +38,4 @@ def get_jokes(num, repeat=True):
 
 
 n = int(input('Какое количество шуток поднимет вам настроение?'))
-print(get_jokes(n, repeat=False))
+print(get_jokes(n, repeat=True))

@@ -23,17 +23,23 @@ def thesaurus(*args):
     for name in sorted_names:
         if not name[0] in output_dict:
             same_letters_names = filter(lambda el: el.startswith(name[0]), args)
-            output_dict[name[0]] = {*same_letters_names}
+            output_dict[name[0]] = [*same_letters_names]
     return output_dict
 
 
 def thesaurus_adv(*args):
     output_dict = {}
+    sort_lst = []
+    #получаем список первых букв фамилий и сортируем его
     for name in args:
-        reverse_name = name.split(' ')[::-1]
-        if not reverse_name[0][0] in output_dict:
-            same_letters_names = filter(lambda el: el.split(' ')[1][0] == reverse_name[0][0], args)
-            output_dict[reverse_name[0][0]] = thesaurus(*same_letters_names)
+        surname_first_letter = name.split()[::-1][0][:1]
+        if not (surname_first_letter in sort_lst):
+            sort_lst.append(surname_first_letter)
+    sort_lst.sort()
+    for letter in sort_lst:
+        if letter not in output_dict:
+            same_letters_names = filter(lambda el: el.split(' ')[1][0] == letter, args)
+            output_dict[letter] = thesaurus(*same_letters_names)
     return output_dict
 
 
