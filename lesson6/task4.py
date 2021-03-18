@@ -6,27 +6,24 @@
 в результате парсинга."""
 
 
+hob_line = ''
 dct = {}
-file_users = open('users.csv', 'r', encoding='utf-8')
-file_hobby = open('hobby.csv', 'r', encoding='utf-8')
-write_file = open('for_task4.txt', 'w', encoding='utf-8')
-for us_line in file_users:
+with open('users.csv', 'r', encoding='utf-8') as file_users, open('hobby.csv', 'r', encoding='utf-8') as file_hobby, \
+        open('for_task4.txt', 'w', encoding='utf-8') as write_file:
+    for us_line in file_users:
+        hob_line = file_hobby.readline()
+        # ФИО преобразуем в кортеж, так как будем их использовать в качестве ключа словаря
+        # а хобби можно хранить в виде списка, вдруг понадобится редактировать. Логично вместо None делать
+        # пустой список, но по условию должно быть None
+        us_line = us_line.rstrip()
+        us_line1 = tuple(us_line.split(','))
+        if hob_line:
+            dct[us_line1] = hob_line.rstrip().split(',')
+            write_file.write(us_line + ':' + hob_line.rstrip() + '\n')
+        else:
+            dct[us_line1] = [None]
+            write_file.write(us_line + ':None\n')
     hob_line = file_hobby.readline()
-    # ФИО преобразуем в кортеж, так как будем их использовать в качестве ключа словаря
-    # а хобби можно хранить в виде списка, вдруг понадобится редактировать. Логично вместо None делать
-    # пустой список, но по условию должно быть None
-    us_line = us_line.rstrip()
-    us_line1 = tuple(us_line.split(','))
-    if hob_line:
-        dct[us_line1] = hob_line.rstrip().split(',')
-        write_file.write(us_line + ':' + hob_line.rstrip() + '\n')
-    else:
-        dct[us_line1] = [None]
-        write_file.write(us_line + ':None\n')
 print(dct)
-hob_line = file_hobby.readline()
-file_users.close()
-file_hobby.close()
-write_file.close()
 if hob_line:
     exit(1)
