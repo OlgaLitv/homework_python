@@ -9,10 +9,10 @@
 class Stationery:
 
     def __init__(self, title):
-        self.__title = title
+        self._title = title
 
     def get_title(self):
-        return self.__title
+        return self._title
 
     def draw(self):
         print('запуск отрисовки')
@@ -21,13 +21,12 @@ class Stationery:
 class Pen(Stationery):
 
     def draw(self):
-        print('рисует', super().get_title())
-
+        print('рисует', self._title)
 
 class Pencil(Stationery):
 
     def draw(self):
-        print('рисует', super().get_title())
+        print('рисует', self._title)
 
 
 class Handle(Stationery):

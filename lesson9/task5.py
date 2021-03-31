@@ -20,29 +20,29 @@ import random
 class Car:
 
     def __init__(self, name, color, police=False, max_speed=180):
-        self.name = name
-        self.color = color
-        self.MAX_SPEED = max_speed
-        self.current_speed = 0
-        self.is_police = police
-        self.direction = 'straight'
+        self._name = name
+        self._color = color
+        self._MAX_SPEED = max_speed
+        self._current_speed = 0
+        self._is_police = police
+        self._direction = 'straight'
 
     def go(self, speed=10):
-        self.current_speed = speed if speed <= self.MAX_SPEED else self.MAX_SPEED
+        self._current_speed = speed if speed <= self._MAX_SPEED else self._MAX_SPEED
 
     def stop(self):
-        self.current_speed = 0
+        self._current_speed = 0
 
     def turn(self, direction='left'):
-        self.direction = direction
+        self._direction = direction
 
     def is_police(self):
-        return self.is_police
+        return self._is_police
 
     def get_status(self):
-        answer = self.name + ' ' + self.color
-        answer += ' ' + self.direction if self.current_speed != 0 else ''
-        return answer + ' ' + str(self.current_speed)
+        answer = self._name + ' ' + self._color
+        answer += ' ' + self._direction if self._current_speed != 0 else ''
+        return answer + ' ' + str(self._current_speed)
 
 
 class TownCar(Car):
@@ -52,7 +52,7 @@ class TownCar(Car):
 
     def get_status(self):
         answer = super().get_status()
-        answer += ' ПРЕВЫШЕНИЕ ' if self.current_speed > 60 else ''
+        answer += ' ПРЕВЫШЕНИЕ ' if self._current_speed > 60 else ''
         return answer
 
 
@@ -69,7 +69,7 @@ class WorkCar(Car):
 
     def get_status(self):
         answer = super().get_status()
-        answer += ' ПРЕВЫШЕНИЕ ' if self.current_speed > 40 else ''
+        answer += ' ПРЕВЫШЕНИЕ ' if self._current_speed > 40 else ''
         return answer
 
 
@@ -82,9 +82,9 @@ class PoliceCar(Car):
         return 'POLICE ' + super().get_status()
 
 
-car1 = TownCar('MAZDA', 'green')
+car1 = TownCar('VOLVO', 'green')
 car2 = SportCar('SUBARU', 'white')
-car3 = WorkCar('VOLVO', 'black')
+car3 = WorkCar('RENO', 'black')
 car4 = PoliceCar('FORD', 'red')
 car_lst = [car1, car2, car3, car4]
 directions = ('straight', 'left', 'right', 'back')

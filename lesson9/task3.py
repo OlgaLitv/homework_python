@@ -13,27 +13,27 @@ get_total_income() (wage + bonus);
 class Employee:
 
     def __init__(self, name, surname):
-        self.name, self.surname = name, surname
+        self._name, self._surname = name, surname
 
     def get_full_name(self):
-        return self.name + ' ' + self.surname
+        return self._name + ' ' + self._surname
 
 
 class Position:
 
     def __init__(self, empl, position, wage, bonus):
         if isinstance(empl, Employee):
-            self.employee = empl
+            self._employee = empl
         else:
             raise ValueError('Give employee, please')
         self.position = position
-        self.__income = {'wage': wage, 'bonus': bonus}
+        self._income = {'wage': wage, 'bonus': bonus}
 
     def get_full_name(self):
-        return self.employee.get_full_name()
+        return self._employee.get_full_name()
 
     def get_total_income(self):
-        return self.__income['wage'] + self.__income['bonus']
+        return self._income['wage'] + self._income['bonus']
 
 
 empl1, empl2 = Employee('Олег', 'Титов'), Employee('Петр', 'Китов')

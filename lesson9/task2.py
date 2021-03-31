@@ -14,12 +14,12 @@
 class Road:
 
     def __init__(self, ln=1, w=1):
-        self.__length = ln
-        self.__widht = w
+        self._length = ln
+        self._widht = w
         self.__WGH = 25
 
     def get_asphalt_mass(self, height):
-        return self.__length * self.__widht * self.__WGH * height
+        return self._length * self._widht * self.__WGH * height
 
 
 new_road = Road(5000, 20)
