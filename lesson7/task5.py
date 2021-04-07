@@ -32,7 +32,7 @@ def main(argv):
         for file in dict_files[number]:
             _, ext = os.path.splitext(file)
             set_ext.add(ext[1:])
-        dict_to_save[number] = (len(dict_files[number]), list(set_ext))
+        dict_to_save[number] = tuple((len(dict_files[number]), list(set_ext)))
     cur_dir = os.path.abspath(os.curdir)
     file_save_name = os.path.basename(cur_dir) + '_summary.json'
     string_dict = json.dumps(dict_to_save)

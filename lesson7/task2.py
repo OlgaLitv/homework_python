@@ -48,7 +48,6 @@ my_project
 
 import os
 
-
 try:
     with open('config.yaml') as f:
         hier_dct = {0: ''}
