@@ -17,9 +17,7 @@ class BusinessUnit:  # склад или подразделение фирмы
 
     def take_to_the_unit(self, office_eq, num=1, get_from=None):
         """ если заполнено get_from, то это перемещение с get_from в self, если get_from не заполнено, то это
-        поступление новой оргтехники извне, из магазина, например
-        Сначала я сделала отдельный класс Подразделение, но он получислся слишком похожим на класс Склад, тогда
-        было принято решение сделать один класс BusinessUnit"""
+        поступление новой оргтехники извне, из магазина, например """
         if get_from:
             if get_from.__equipment[office_eq] >= num:
                 get_from.__equipment[office_eq] -= num
